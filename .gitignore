@@ -10,3 +10,6 @@
 *.lai
 *.la
 *.a
+
+# Standard build directory
+build

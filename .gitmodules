@@ -1,0 +1,3 @@
+[submodule "libarena"]
+	path = libarena
+	url = http://25thandClement.com/~william/projects/libarena.git
