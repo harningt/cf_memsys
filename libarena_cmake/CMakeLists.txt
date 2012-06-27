@@ -28,9 +28,14 @@ add_definitions(-DLIBARENA_SOURCE)
 
 add_library(arena STATIC ${SOURCES} ${HEADERS})
 
-SET(LIBARENA_LIBRARIES arena)
-GET_FILENAME_COMPONENT(LIBARENA_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/${LIBARENA_SRC} ABSOLUTE)
+# Setup header layout
+file(COPY ${HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/arena)
+
+get_filename_component(LIBARENA_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
 
 configure_file(libarena-config.cmake.in ${CF_MODULE_PATH}/libarena-config.cmake @ONLY)
 export(TARGETS arena APPEND FILE ${CF_MODULE_PATH}/libarena-config.cmake)
-WRITE_BASIC_CONFIG_VERSION_FILE(${CF_MODULE_PATH}/libarena-config-version.cmake VERSION ${LIBARENA_VERSION} COMPATIBILITY SameMajorVersion)
+WRITE_BASIC_CONFIG_VERSION_FILE(
+    ${CF_MODULE_PATH}/libarena-config-version.cmake
+    VERSION ${LIBARENA_VERSION}
+    COMPATIBILITY SameMajorVersion)
