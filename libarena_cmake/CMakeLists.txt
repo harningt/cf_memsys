@@ -13,7 +13,7 @@ set(SOURCES
     ${LIBARENA_SRC}/proto.c
     ${LIBARENA_SRC}/util.c
 )
-set(HEADERS
+set(PUBLIC_HEADERS
     ${LIBARENA_SRC}/align.h
     ${LIBARENA_SRC}/arena.h
     ${LIBARENA_SRC}/pool.h
@@ -22,6 +22,9 @@ set(HEADERS
     ${LIBARENA_SRC}/rbits.h
     ${LIBARENA_SRC}/util.h
 )
+set(HEADERS
+    ${PUBLIC_HEADERS}
+)
 include_directories(${LIBARENA_SRC})
 
 add_definitions(-DLIBARENA_SOURCE)
@@ -29,7 +32,7 @@ add_definitions(-DLIBARENA_SOURCE)
 add_library(arena STATIC ${SOURCES} ${HEADERS})
 
 # Setup header layout
-file(COPY ${HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/arena)
+file(COPY ${PUBLIC_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/arena)
 
 get_filename_component(LIBARENA_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
 
