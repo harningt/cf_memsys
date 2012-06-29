@@ -23,7 +23,7 @@ add_library(dlmalloc_arena STATIC ${SOURCES} ${HEADERS})
 
 add_executable(dlmalloc_arena_test ${SOURCES} ${HEADERS})
 
-find_package(libarena REQUIRED CONFIG PATHS ${CF_MODULE_PATH})
+find_package(libarena REQUIRED CONFIG PATHS ${CMAKE_MODULE_PATH})
 
 include_directories(${LIBARENA_INCLUDE_DIRS})
 
@@ -39,10 +39,10 @@ set_target_properties(dlmalloc_arena_test
 file(COPY ${PUBLIC_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 get_filename_component(DLMALLOC_ARENA_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
-configure_file(dlmalloc_arena-config.cmake.in ${CF_MODULE_PATH}/dlmalloc_arena-config.cmake @ONLY)
-export(TARGETS dlmalloc_arena APPEND FILE ${CF_MODULE_PATH}/dlmalloc_arena-config.cmake)
+configure_file(dlmalloc_arena-config.cmake.in ${CF_MEMSYS_MODULE_PATH}/dlmalloc_arena-config.cmake @ONLY)
+export(TARGETS dlmalloc_arena APPEND FILE ${CF_MEMSYS_MODULE_PATH}/dlmalloc_arena-config.cmake)
 WRITE_BASIC_CONFIG_VERSION_FILE(
-    ${CF_MODULE_PATH}/dlmalloc_arena-config-version.cmake
+    ${CF_MEMSYS_MODULE_PATH}/dlmalloc_arena-config-version.cmake
     VERSION ${DLMALLOC_ARENA_VERSION}
     COMPATIBILITY SameMajorVersion)
 

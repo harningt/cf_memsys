@@ -21,7 +21,7 @@ include_directories(tlsf)
 add_library(tlsf_arena STATIC ${SOURCES} ${HEADERS})
 add_executable(tlsf_arena_test ${SOURCES} ${HEADERS})
 
-find_package(libarena REQUIRED CONFIG PATHS ${CF_MODULE_PATH})
+find_package(libarena REQUIRED CONFIG PATHS ${CMAKE_MODULE_PATH})
 
 include_directories(${LIBARENA_INCLUDE_DIRS})
 
@@ -37,10 +37,10 @@ set_target_properties(tlsf_arena_test
 file(COPY ${PUBLIC_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 get_filename_component(TLSF_ARENA_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
-configure_file(tlsf_arena-config.cmake.in ${CF_MODULE_PATH}/tlsf_arena-config.cmake @ONLY)
-export(TARGETS tlsf_arena APPEND FILE ${CF_MODULE_PATH}/tlsf_arena-config.cmake)
+configure_file(tlsf_arena-config.cmake.in ${CF_MEMSYS_MODULE_PATH}/tlsf_arena-config.cmake @ONLY)
+export(TARGETS tlsf_arena APPEND FILE ${CF_MEMSYS_MODULE_PATH}/tlsf_arena-config.cmake)
 WRITE_BASIC_CONFIG_VERSION_FILE(
-    ${CF_MODULE_PATH}/tlsf_arena-config-version.cmake
+    ${CF_MEMSYS_MODULE_PATH}/tlsf_arena-config-version.cmake
     VERSION ${TLSF_ARENA_VERSION}
     COMPATIBILITY SameMajorVersion)
 

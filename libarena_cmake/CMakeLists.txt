@@ -36,9 +36,9 @@ file(COPY ${PUBLIC_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/arena)
 
 get_filename_component(LIBARENA_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
 
-configure_file(libarena-config.cmake.in ${CF_MODULE_PATH}/libarena-config.cmake @ONLY)
-export(TARGETS arena APPEND FILE ${CF_MODULE_PATH}/libarena-config.cmake)
+configure_file(libarena-config.cmake.in ${CF_MEMSYS_MODULE_PATH}/libarena-config.cmake @ONLY)
+export(TARGETS arena APPEND FILE ${CF_MEMSYS_MODULE_PATH}/libarena-config.cmake)
 WRITE_BASIC_CONFIG_VERSION_FILE(
-    ${CF_MODULE_PATH}/libarena-config-version.cmake
+    ${CF_MEMSYS_MODULE_PATH}/libarena-config-version.cmake
     VERSION ${LIBARENA_VERSION}
     COMPATIBILITY SameMajorVersion)
